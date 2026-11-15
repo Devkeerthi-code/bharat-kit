@@ -1,0 +1,76 @@
+{
+  "gstin": {
+    "formatGstin": 1577,
+    "gstinCheckDigit": 257,
+    "isGstStateCode": 526,
+    "isValidGstin": 1522,
+    "normalizeGstin": 118,
+    "parseGstin": 1637,
+    "validateGstin": 1512
+  },
+  "pan": {
+    "formatPan": 718,
+    "isValidPan": 708,
+    "normalizePan": 116,
+    "parsePan": 786,
+    "validatePan": 699
+  },
+  "ifsc": {
+    "isValidIfsc": 489,
+    "lookupIfsc": 863,
+    "normalizeIfsc": 117,
+    "parseIfsc": 519,
+    "validateIfsc": 479
+  },
+  "upi": {
+    "buildUpiLink": 1068,
+    "isValidVpa": 585,
+    "normalizeVpa": 91,
+    "parseVpa": 631,
+    "validateVpa": 575
+  },
+  "mobile": {
+    "formatMobile": 587,
+    "isValidMobile": 506,
+    "normalizeMobile": 174,
+    "toWhatsAppLink": 581,
+    "validateMobile": 497
+  },
+  "pincode": {
+    "isValidPincode": 390,
+    "normalizePincode": 96,
+    "parsePincode": 988,
+    "validatePincode": 380
+  },
+  "aadhaar": {
+    "isValidAadhaar": 619,
+    "maskAadhaar": 289,
+    "normalizeAadhaar": 96,
+    "validateAadhaar": 609,
+    "verhoeffCheckDigit": 316,
+    "verhoeffValidate": 300
+  },
+  "money": {
+    "addPaise": 232,
+    "allocatePaise": 419,
+    "formatInr": 787,
+    "fromPaise": 232,
+    "groupIndian": 365,
+    "multiplyPaise": 253,
+    "parseAmount": 617,
+    "percentOfPaise": 424,
+    "rupeesInWords": 1425,
+    "splitPaise": 474,
+    "subtractPaise": 224,
+    "toPaise": 517,
+    "toShortForm": 673,
+    "toWords": 1156
+  },
+  "vehicle": {
+    "formatVehicleNumber": 1168,
+    "isValidVehicleNumber": 1076,
+    "normalizeVehicleNumber": 126,
+    "parseVehicleNumber": 1063,
+    "validateVehicleNumber": 1090
+  }
+}
