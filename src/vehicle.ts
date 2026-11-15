@@ -31,8 +31,8 @@ export interface BharatVehicleNumber {
 export type VehicleNumberParts = StateVehicleNumber | BharatVehicleNumber;
 
 const STATE_PLATE = /^([A-Z]{2})(\d{1,2})([A-Z]{0,3})(\d{1,4})$/;
-/** Bharat (BH) series: YY BH #### XX. Source: MoRTH notification G.S.R. 594(E), 26 August 2021. */
-const BHARAT_PLATE = /^(\d{2})BH(\d{4})([A-Z]{1,2})$/;
+/** Bharat (BH) series: YY BH #### XX, XX being two letters. Source: MoRTH notification G.S.R. 594(E), 26 August 2021. */
+const BHARAT_PLATE = /^(\d{2})BH(\d{4})([A-Z]{2})$/;
 
 /** Upper-cases and removes spaces, hyphens and dots: "ka-01-ab-1234" → "KA01AB1234". */
 export function normalizeVehicleNumber(input: string): string {

@@ -45,6 +45,7 @@ describe("parseVehicleNumber", () => {
     ["KA 00 AB 1234", "INVALID_RTO_CODE"],
     ["KA 01 AB 0000", "INVALID_NUMBER"],
     ["22 BH 0000 AA", "INVALID_NUMBER"],
+    ["22 BH 1234 A", "INVALID_FORMAT"],
   ])("rejects %j with %s", (input, reason) => {
     expect(parseVehicleNumber(input)).toMatchObject({ ok: false, reason });
   });
