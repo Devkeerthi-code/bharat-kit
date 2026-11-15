@@ -1,6 +1,6 @@
 {
   "name": "bharat-kit",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Validate, parse and format Indian data: GSTIN, PAN, IFSC, UPI, mobile numbers, pincodes, Aadhaar checksum, money in lakhs and crores, vehicle numbers. Zero dependencies.",
   "keywords": [
     "india",
@@ -163,13 +163,15 @@
     "docs:preview": "vitepress preview docs",
     "changeset": "changeset",
     "release": "npm run build && changeset publish",
-    "ci": "npm run lint && npm run typecheck && npm run coverage && npm run build && npm run size && npm run check:package"
+    "ci": "npm run lint && npm run typecheck && npm run coverage && npm run build && npm run test:smoke && npm run size && npm run check:package",
+    "test:smoke": "node scripts/smoke.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
     "@eslint/js": "^10.0.1",
     "@size-limit/preset-small-lib": "^14.3.0",
     "@vitest/coverage-v8": "^5.1.0",
+    "esbuild": "^0.28.2",
     "eslint": "^10.15.0",
     "fast-check": "^4.10.2",
     "globals": "^17.14.0",
