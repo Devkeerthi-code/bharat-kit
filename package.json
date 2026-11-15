@@ -1,0 +1,185 @@
+{
+  "name": "bharat-kit",
+  "version": "0.1.0",
+  "description": "Validate, parse and format Indian data: GSTIN, PAN, IFSC, UPI, mobile numbers, pincodes, Aadhaar checksum, money in lakhs and crores, vehicle numbers. Zero dependencies.",
+  "keywords": [
+    "india",
+    "gstin",
+    "pan",
+    "ifsc",
+    "upi",
+    "aadhaar",
+    "verhoeff",
+    "pincode",
+    "lakh",
+    "crore",
+    "inr",
+    "validation",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "Devkeerthi-code",
+  "homepage": "https://devkeerthi-code.github.io/bharat-kit/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devkeerthi-code/bharat-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Devkeerthi-code/bharat-kit/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./gstin": {
+      "import": {
+        "types": "./dist/gstin.d.ts",
+        "default": "./dist/gstin.js"
+      },
+      "require": {
+        "types": "./dist/gstin.d.cts",
+        "default": "./dist/gstin.cjs"
+      }
+    },
+    "./pan": {
+      "import": {
+        "types": "./dist/pan.d.ts",
+        "default": "./dist/pan.js"
+      },
+      "require": {
+        "types": "./dist/pan.d.cts",
+        "default": "./dist/pan.cjs"
+      }
+    },
+    "./ifsc": {
+      "import": {
+        "types": "./dist/ifsc.d.ts",
+        "default": "./dist/ifsc.js"
+      },
+      "require": {
+        "types": "./dist/ifsc.d.cts",
+        "default": "./dist/ifsc.cjs"
+      }
+    },
+    "./upi": {
+      "import": {
+        "types": "./dist/upi.d.ts",
+        "default": "./dist/upi.js"
+      },
+      "require": {
+        "types": "./dist/upi.d.cts",
+        "default": "./dist/upi.cjs"
+      }
+    },
+    "./mobile": {
+      "import": {
+        "types": "./dist/mobile.d.ts",
+        "default": "./dist/mobile.js"
+      },
+      "require": {
+        "types": "./dist/mobile.d.cts",
+        "default": "./dist/mobile.cjs"
+      }
+    },
+    "./pincode": {
+      "import": {
+        "types": "./dist/pincode.d.ts",
+        "default": "./dist/pincode.js"
+      },
+      "require": {
+        "types": "./dist/pincode.d.cts",
+        "default": "./dist/pincode.cjs"
+      }
+    },
+    "./aadhaar": {
+      "import": {
+        "types": "./dist/aadhaar.d.ts",
+        "default": "./dist/aadhaar.js"
+      },
+      "require": {
+        "types": "./dist/aadhaar.d.cts",
+        "default": "./dist/aadhaar.cjs"
+      }
+    },
+    "./money": {
+      "import": {
+        "types": "./dist/money.d.ts",
+        "default": "./dist/money.js"
+      },
+      "require": {
+        "types": "./dist/money.d.cts",
+        "default": "./dist/money.cjs"
+      }
+    },
+    "./vehicle": {
+      "import": {
+        "types": "./dist/vehicle.d.ts",
+        "default": "./dist/vehicle.js"
+      },
+      "require": {
+        "types": "./dist/vehicle.d.cts",
+        "default": "./dist/vehicle.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "size": "size-limit",
+    "check:package": "publint",
+    "docs:sizes": "node scripts/measure-sizes.mjs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "npm run docs:sizes && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "changeset": "changeset",
+    "release": "npm run build && changeset publish",
+    "ci": "npm run lint && npm run typecheck && npm run coverage && npm run build && npm run size && npm run check:package"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "@eslint/js": "^10.0.1",
+    "@size-limit/preset-small-lib": "^14.3.0",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.15.0",
+    "fast-check": "^4.10.2",
+    "globals": "^17.14.0",
+    "publint": "^0.3.25",
+    "size-limit": "^14.3.0",
+    "tsup": "^9.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vitepress": "^1.6.4",
+    "vitest": "^5.1.0",
+    "vue": "^3.5.45"
+  }
+}

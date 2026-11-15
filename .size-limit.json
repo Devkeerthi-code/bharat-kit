@@ -1,0 +1,74 @@
+[
+  {
+    "name": "bharat-kit (everything)",
+    "path": "dist/index.js",
+    "import": "*",
+    "limit": "8600 B"
+  },
+  {
+    "name": "bharat-kit/gstin",
+    "path": "dist/gstin.js",
+    "import": "*",
+    "limit": "1800 B"
+  },
+  {
+    "name": "bharat-kit/pan",
+    "path": "dist/pan.js",
+    "import": "*",
+    "limit": "900 B"
+  },
+  {
+    "name": "bharat-kit/ifsc",
+    "path": "dist/ifsc.js",
+    "import": "*",
+    "limit": "960 B"
+  },
+  {
+    "name": "bharat-kit/upi",
+    "path": "dist/upi.js",
+    "import": "*",
+    "limit": "1150 B"
+  },
+  {
+    "name": "bharat-kit/mobile",
+    "path": "dist/mobile.js",
+    "import": "*",
+    "limit": "720 B"
+  },
+  {
+    "name": "bharat-kit/pincode",
+    "path": "dist/pincode.js",
+    "import": "*",
+    "limit": "1120 B"
+  },
+  {
+    "name": "bharat-kit/aadhaar",
+    "path": "dist/aadhaar.js",
+    "import": "*",
+    "limit": "840 B"
+  },
+  {
+    "name": "bharat-kit/money",
+    "path": "dist/money.js",
+    "import": "*",
+    "limit": "3400 B"
+  },
+  {
+    "name": "bharat-kit/vehicle",
+    "path": "dist/vehicle.js",
+    "import": "*",
+    "limit": "1330 B"
+  },
+  {
+    "name": "isValidGstin only",
+    "path": "dist/index.js",
+    "import": "{ isValidGstin }",
+    "limit": "1400 B"
+  },
+  {
+    "name": "formatInr only",
+    "path": "dist/index.js",
+    "import": "{ formatInr }",
+    "limit": "1160 B"
+  }
+]

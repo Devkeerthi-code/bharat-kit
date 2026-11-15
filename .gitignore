@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
