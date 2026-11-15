@@ -1,0 +1,46 @@
+/* Paper and ink, one sindoor accent used only for interaction. */
+:root {
+  --paper: #ffffff;
+  --paper-2: #f5f4f0;
+  --ink: #0b0b0a;
+  --ink-2: #57554f;
+  --rule: #dcdad4;
+  --rule-strong: #0b0b0a;
+  --accent: #c8321e;
+  --accent-ink: #ffffff;
+
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --font-deva: "Noto Serif Devanagari", "Nirmala UI", serif;
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-md: 1rem;
+  --t-lg: 1.25rem;
+  --t-xl: clamp(1.75rem, 3.2vw, 2.5rem);
+  --t-2xl: clamp(2.5rem, 6vw, 5.5rem);
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --radius: 0;
+
+  --dur: 160ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.45, 0.64, 1);
+
+  color-scheme: light;
+}
+
+html.dark {
+  --paper: #0f0f0e;
+  --paper-2: #181816;
+  --ink: #f2f0ea;
+  --ink-2: #a19e96;
+  --rule: #2c2b28;
+  --rule-strong: #f2f0ea;
+  --accent: #ff6a4d;
+  --accent-ink: #0f0f0e;
+  color-scheme: dark;
+}

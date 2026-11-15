@@ -1,0 +1,35 @@
+/* Header and footer */
+.site-head { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.site-head__row { display: flex; align-items: center; gap: var(--s5); min-height: 56px; }
+.brand { font: 400 1.625rem/1 var(--font-display); letter-spacing: -0.01em; display: inline-flex; align-items: flex-end; gap: 3px; }
+.brand__mark { width: 7px; height: 7px; background: var(--ink); margin-bottom: 4px; transition: background-color var(--dur) var(--ease); }
+.brand:hover .brand__mark { background: var(--accent); }
+.site-nav { display: flex; gap: var(--s5); margin-left: auto; font-size: var(--t-sm); }
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  background: none; border: 1px solid var(--rule); padding: 6px 10px; min-height: 32px;
+  font: 500 var(--t-xs)/1 var(--font-mono);
+  transition: border-color var(--dur) var(--ease);
+}
+.theme-toggle__label { min-width: 5ch; text-align: left; }
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle__dot { width: 10px; height: 10px; border: 1px solid var(--ink); box-shadow: inset 5px 0 0 var(--ink); }
+@media (max-width: 720px) {
+  .site-head__row { flex-wrap: wrap; gap: 0 var(--s4); padding-block: var(--s2); }
+  .site-nav { order: 3; width: 100%; margin: 0; gap: var(--s4); overflow-x: auto; padding-block: var(--s2) var(--s1); scrollbar-width: none; }
+  .theme-toggle { margin-left: auto; }
+}
+
+.site-foot { margin-top: var(--s10); border-top: 1px solid var(--rule-strong); padding-block: var(--s6) var(--s7); }
+.site-foot__grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--s6) var(--s5); }
+.install__line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); margin-top: var(--s2); }
+.install__cmd { font: 400 clamp(1.75rem, 5vw, 4rem)/1 var(--font-mono); letter-spacing: -0.03em; }
+.colophon { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); align-content: end; }
+.colophon dt { font: 500 var(--t-xs)/1.4 var(--font-mono); color: var(--ink-2); }
+.colophon dd { font: 400 1.375rem/1.2 var(--font-display); }
+.site-foot__small { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); font-size: var(--t-xs); color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: var(--s4); }
+@media (max-width: 720px) { .site-foot__grid { grid-template-columns: 1fr; } }
+
+.not-found { padding-block: var(--s9); }
+.not-found h1 { font: 400 var(--t-2xl)/1 var(--font-display); margin-block: var(--s4) var(--s5); }
+.not-found p { color: var(--ink-2); margin-bottom: var(--s5); max-width: 48ch; }
