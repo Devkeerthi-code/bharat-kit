@@ -8,7 +8,7 @@ Validate, parse and format Indian data in TypeScript: GSTIN, PAN, IFSC, UPI IDs,
 [![npm downloads](https://img.shields.io/npm/dm/bharat-kit.svg)](https://www.npmjs.com/package/bharat-kit)
 [![license: MIT](https://img.shields.io/badge/license-MIT-black.svg)](./LICENSE)
 
-**Live docs and playground:** TODO: add the link after the first GitHub Pages deploy (expected at `https://devkeerthi-code.github.io/bharat-kit/`).
+**Live docs and playground:** [devkeerthi-code.github.io/bharat-kit](https://devkeerthi-code.github.io/bharat-kit/)
 
 ![The docs home page: a demo GSTIN set in large type with its computed check digit](docs/public/screenshots/home-1280-light.png)
 
@@ -198,7 +198,7 @@ The library needs no environment variables. The docs build reads two optional on
 **Docs (GitHub Pages)**
 1. Push the repository to GitHub with `main` as the default branch.
 2. In the repository settings, open **Pages** and set **Source** to **GitHub Actions**.
-3. The `Docs` workflow builds `docs/` and deploys it on every push to `main`. The site is served from `https://<user>.github.io/bharat-kit/`. If you use a custom domain, set `DOCS_BASE=/` for the build.
+3. The `Docs` workflow builds `docs/` and deploys it on every push to `main`. The site is served from `https://devkeerthi-code.github.io/bharat-kit/`. If you use a custom domain, set `DOCS_BASE=/` for the build.
 4. Optional: add a repository variable `GOATCOUNTER_CODE` to count page views without cookies.
 
 **npm**
