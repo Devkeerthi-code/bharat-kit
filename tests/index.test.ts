@@ -6,6 +6,7 @@ describe("package entry", () => {
     for (const name of [
       "validateGstin",
       "validatePan",
+      "validateTan",
       "lookupIfsc",
       "buildUpiLink",
       "toWhatsAppLink",

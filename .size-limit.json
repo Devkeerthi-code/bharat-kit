@@ -18,6 +18,12 @@
     "limit": "900 B"
   },
   {
+    "name": "bharat-kit/tan",
+    "path": "dist/tan.js",
+    "import": "*",
+    "limit": "600 B"
+  },
+  {
     "name": "bharat-kit/ifsc",
     "path": "dist/ifsc.js",
     "import": "*",

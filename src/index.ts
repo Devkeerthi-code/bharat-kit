@@ -1,6 +1,7 @@
 export type { Err, Ok, Result } from "./result";
 export * from "./gstin";
 export * from "./pan";
+export * from "./tan";
 export * from "./ifsc";
 export * from "./upi";
 export * from "./mobile";
