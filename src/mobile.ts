@@ -53,6 +53,17 @@ export function formatMobile(input: string, format: MobileFormat = "internationa
 }
 
 /**
+ * Hides all but the last four digits, the way OTP screens show where a code was sent:
+ * "+91 XXXXX X3210". Use `format: "national"` to drop the +91.
+ */
+export function maskMobile(input: string, format: "national" | "international" = "international"): Result<string, MobileError> {
+  const result = validateMobile(input);
+  if (!result.ok) return result;
+  const masked = `XXXXX X${result.value.slice(6)}`;
+  return ok(format === "national" ? masked : `+91 ${masked}`);
+}
+
+/**
  * Builds a WhatsApp click-to-chat link.
  * Source: WhatsApp Help Center, "How to use click to chat": https://wa.me/<number>
  * with the full number in international format, no +, spaces or leading zeros.

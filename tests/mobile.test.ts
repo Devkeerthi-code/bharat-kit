@@ -1,6 +1,6 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import { formatMobile, isValidMobile, normalizeMobile, toWhatsAppLink, validateMobile } from "../src/mobile";
+import { formatMobile, isValidMobile, maskMobile, normalizeMobile, toWhatsAppLink, validateMobile } from "../src/mobile";
 import { validMobile } from "./arbitraries";
 
 // 98765 43210 is the conventional demo number.
@@ -56,5 +56,20 @@ describe("formatMobile and toWhatsAppLink", () => {
         return result.ok && result.value === number && isValidMobile(number);
       }),
     );
+  });
+});
+
+describe("maskMobile", () => {
+  it("shows only the last four digits", () => {
+    expect(maskMobile("098765-43210")).toEqual({ ok: true, value: "+91 XXXXX X3210" });
+    expect(maskMobile("+91 98765 43210", "national")).toEqual({ ok: true, value: "XXXXX X3210" });
+    expect(maskMobile("12345")).toMatchObject({ ok: false, reason: "INVALID_LENGTH" });
+  });
+
+  it("never reveals the first six digits", () => {
+    fc.assert(fc.property(validMobile, (n) => {
+      const masked = maskMobile(n, "national");
+      return masked.ok && masked.value === `XXXXX X${n.slice(6)}`;
+    }));
   });
 });
