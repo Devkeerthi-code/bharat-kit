@@ -29,7 +29,7 @@ jobs:
         env:
           # Optional: cookie-free page counts. Add the repository variable to enable.
           GOATCOUNTER_CODE: ${{ vars.GOATCOUNTER_CODE }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: docs/.vitepress/dist
 
