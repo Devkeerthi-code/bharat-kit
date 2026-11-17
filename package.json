@@ -1,6 +1,6 @@
 {
   "name": "bharat-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Validate, parse and format Indian data: GSTIN, PAN, IFSC, UPI, mobile numbers, pincodes, Aadhaar checksum, money in lakhs and crores, vehicle numbers. Zero dependencies.",
   "keywords": [
     "india",
