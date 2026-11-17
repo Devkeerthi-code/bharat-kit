@@ -15,13 +15,19 @@
     "name": "bharat-kit/pan",
     "path": "dist/pan.js",
     "import": "*",
-    "limit": "900 B"
+    "limit": "1000 B"
   },
   {
     "name": "bharat-kit/tan",
     "path": "dist/tan.js",
     "import": "*",
     "limit": "600 B"
+  },
+  {
+    "name": "bharat-kit/cin",
+    "path": "dist/cin.js",
+    "import": "*",
+    "limit": "1000 B"
   },
   {
     "name": "bharat-kit/ifsc",

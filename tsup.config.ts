@@ -1,6 +1,6 @@
 import { defineConfig } from "tsup";
 
-const modules = ["gstin", "pan", "tan", "ifsc", "upi", "mobile", "pincode", "aadhaar", "money", "vehicle"];
+const modules = ["gstin", "pan", "tan", "cin", "ifsc", "upi", "mobile", "pincode", "aadhaar", "money", "vehicle"];
 
 export default defineConfig({
   entry: ["src/index.ts", ...modules.map((name) => `src/${name}.ts`)],

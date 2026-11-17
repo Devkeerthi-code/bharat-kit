@@ -73,6 +73,16 @@
         "default": "./dist/tan.cjs"
       }
     },
+    "./cin": {
+      "import": {
+        "types": "./dist/cin.d.ts",
+        "default": "./dist/cin.js"
+      },
+      "require": {
+        "types": "./dist/cin.d.cts",
+        "default": "./dist/cin.cjs"
+      }
+    },
     "./ifsc": {
       "import": {
         "types": "./dist/ifsc.d.ts",
