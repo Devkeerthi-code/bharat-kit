@@ -1,6 +1,6 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import { formatPan, isValidPan, normalizePan, parsePan, validatePan } from "../src/pan";
+import { formatPan, isValidPan, maskPan, normalizePan, parsePan, validatePan } from "../src/pan";
 import { validPan } from "./arbitraries";
 
 // Demo PANs: made-up values that follow the published structure.
@@ -43,6 +43,24 @@ describe("parsePan", () => {
     fc.assert(fc.property(validPan, (pan) => {
       const parsed = parsePan(pan.toLowerCase());
       return parsed.ok && parsed.value.pan === pan;
+    }));
+  });
+});
+
+describe("maskPan", () => {
+  it("keeps the last four characters", () => {
+    expect(maskPan(" abcpe 1234 f ")).toEqual({ ok: true, value: "XXXXXX234F" });
+    expect(maskPan("ABCPE1234F", { maskChar: "•" })).toEqual({ ok: true, value: "••••••234F" });
+  });
+
+  it("reports a typo instead of masking it", () => {
+    expect(maskPan("ABCDE1234F")).toMatchObject({ ok: false, reason: "INVALID_HOLDER_TYPE" });
+  });
+
+  it("never shows more than the last four characters", () => {
+    fc.assert(fc.property(validPan, (pan) => {
+      const masked = maskPan(pan);
+      return masked.ok && masked.value.startsWith("XXXXXX") && masked.value.endsWith(pan.slice(6));
     }));
   });
 });

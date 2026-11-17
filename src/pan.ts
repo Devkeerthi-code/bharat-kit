@@ -96,3 +96,13 @@ export function formatPan(input: string): string | null {
   const result = validatePan(input);
   return result.ok ? result.value : null;
 }
+
+/**
+ * Hides all but the last four characters for display, e.g. on a receipt: "XXXXXX234F".
+ * Validates first, so a typo is reported rather than masked.
+ */
+export function maskPan(input: string, options: { readonly maskChar?: string } = {}): Result<string, PanError> {
+  const result = validatePan(input);
+  if (!result.ok) return result;
+  return ok(`${(options.maskChar ?? "X").repeat(6)}${result.value.slice(6)}`);
+}
