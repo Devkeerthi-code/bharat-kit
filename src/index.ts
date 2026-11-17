@@ -3,6 +3,7 @@ export * from "./gstin";
 export * from "./pan";
 export * from "./tan";
 export * from "./cin";
+export * from "./udyam";
 export * from "./ifsc";
 export * from "./upi";
 export * from "./mobile";

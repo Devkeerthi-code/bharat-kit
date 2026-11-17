@@ -8,6 +8,7 @@ describe("package entry", () => {
       "validatePan",
       "validateTan",
       "parseCin",
+      "parseUdyam",
       "lookupIfsc",
       "buildUpiLink",
       "toWhatsAppLink",

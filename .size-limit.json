@@ -3,7 +3,7 @@
     "name": "bharat-kit (everything)",
     "path": "dist/index.js",
     "import": "*",
-    "limit": "8600 B"
+    "limit": "9400 B"
   },
   {
     "name": "bharat-kit/gstin",
@@ -28,6 +28,12 @@
     "path": "dist/cin.js",
     "import": "*",
     "limit": "1000 B"
+  },
+  {
+    "name": "bharat-kit/udyam",
+    "path": "dist/udyam.js",
+    "import": "*",
+    "limit": "700 B"
   },
   {
     "name": "bharat-kit/ifsc",

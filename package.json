@@ -83,6 +83,16 @@
         "default": "./dist/cin.cjs"
       }
     },
+    "./udyam": {
+      "import": {
+        "types": "./dist/udyam.d.ts",
+        "default": "./dist/udyam.js"
+      },
+      "require": {
+        "types": "./dist/udyam.d.cts",
+        "default": "./dist/udyam.cjs"
+      }
+    },
     "./ifsc": {
       "import": {
         "types": "./dist/ifsc.d.ts",

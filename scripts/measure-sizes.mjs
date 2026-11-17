@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { gzipSync } from "node:zlib";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const modules = ["gstin", "pan", "tan", "cin", "ifsc", "upi", "mobile", "pincode", "aadhaar", "money", "vehicle"];
+const modules = ["gstin", "pan", "tan", "cin", "udyam", "ifsc", "upi", "mobile", "pincode", "aadhaar", "money", "vehicle"];
 const outFile = resolve(root, "docs/.vitepress/theme/data/sizes.json");
 
 async function bundle(contents) {
