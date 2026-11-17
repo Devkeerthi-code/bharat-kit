@@ -1,0 +1,42 @@
+name: Wrong result
+description: A value is accepted that should be rejected, or the other way round, or a message is unclear.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Use invented values only. Never paste a real Aadhaar, PAN, GSTIN, phone number or bank detail.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options: [gstin, pan, tan, cin, udyam, ifsc, upi, mobile, pincode, aadhaar, money, vehicle]
+    validations:
+      required: true
+  - type: textarea
+    id: call
+    attributes:
+      label: The call
+      description: The function and the demo input you passed.
+      render: ts
+      placeholder: validateGstin("29ABCPE1234F1Z7")
+    validations:
+      required: true
+  - type: textarea
+    id: got
+    attributes:
+      label: What you got
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and the source for the rule
+      description: A link to the issuing authority's documentation helps the most.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: bharat-kit version
+      placeholder: 0.1.0
