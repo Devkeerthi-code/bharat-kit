@@ -1,0 +1,30 @@
+name: New format
+description: Ask for an Indian identifier or format that bharat-kit does not handle yet.
+labels: [enhancement]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Identifier
+      placeholder: e.g. GSTIN for TDS deductors, temporary vehicle registration
+    validations:
+      required: true
+  - type: textarea
+    id: structure
+    attributes:
+      label: Structure
+      description: Length, what each position means, and any check digit. Use an invented example.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Public source
+      description: Where the structure is published. bharat-kit only adds rules it can cite.
+    validations:
+      required: true
+  - type: textarea
+    id: use
+    attributes:
+      label: Where you need it
+      description: A form, an invoice, a payment flow? This helps decide what the parse result should contain.
