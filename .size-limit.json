@@ -15,7 +15,7 @@
     "name": "bharat-kit/pan",
     "path": "dist/pan.js",
     "import": "*",
-    "limit": "1000 B"
+    "limit": "900 B"
   },
   {
     "name": "bharat-kit/tan",
