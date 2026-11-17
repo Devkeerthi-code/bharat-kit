@@ -37,6 +37,17 @@ formatPan(" abcpe 1234 f "); // "ABCPE1234F"
 formatPan("abc");            // null
 ```
 
+## Mask {#mask}
+
+A receipt, an email or a support screen rarely needs the whole PAN. Show the masked form and keep the full one where it is needed.
+
+```ts
+import { maskPan } from "bharat-kit/pan";
+
+maskPan("ABCPE1234F"); // { ok: true, value: "XXXXXX234F" }
+maskPan("ABCDE1234F"); // { ok: false, reason: "INVALID_HOLDER_TYPE", … }
+```
+
 ## Parse {#parse}
 
 ```ts

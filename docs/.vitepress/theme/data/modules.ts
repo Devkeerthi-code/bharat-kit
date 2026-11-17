@@ -94,6 +94,7 @@ export const MODULES: readonly ModuleInfo[] = [
       { name: "isValidPan", signature: "isValidPan(input: string)", returns: "boolean" },
       { name: "parsePan", signature: "parsePan(input: string)", returns: "Result<PanParts, PanError>" },
       { name: "formatPan", signature: "formatPan(input: string)", returns: "string | null" },
+      { name: "maskPan", signature: "maskPan(input: string, { maskChar? })", returns: "Result<string, PanError>", note: 'Keeps the last four: "XXXXXX234F".' },
       { name: "normalizePan", signature: "normalizePan(input: string)", returns: "string" },
     ],
     errors: [

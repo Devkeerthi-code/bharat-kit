@@ -11,6 +11,7 @@
   "pan": {
     "formatPan": 718,
     "isValidPan": 708,
+    "maskPan": 751,
     "normalizePan": 116,
     "parsePan": 786,
     "validatePan": 699
