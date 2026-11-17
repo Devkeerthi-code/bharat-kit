@@ -107,6 +107,35 @@ export const MODULES: readonly ModuleInfo[] = [
     ],
   },
   {
+    slug: "tan",
+    name: "TAN",
+    noun: "TAN",
+    article: "a",
+    sample: "BLRA12345B",
+    purpose: "The number on every TDS certificate: city code, name initial, sequence.",
+    imports: "validateTan, parseTan",
+    snippets: {
+      validate: `validateTan("BLR012345B")\n// { ok: false, reason: "INVALID_FORMAT", index: 3,\n//   message: "Character 4 must be a letter. …" }`,
+      format: `const r = validateTan(" blra-12345-b ")\nif (r.ok) save(r.value) // "BLRA12345B"`,
+      parse: `parseTan("BLRA12345B")\n// { ok: true, value: { jurisdiction: "BLR", nameInitial: "A",\n//   sequence: "12345", checkCharacter: "B" } }`,
+    },
+    functions: [
+      { name: "validateTan", signature: "validateTan(input: string)", returns: "Result<string, TanError>", errors: "EMPTY, INVALID_LENGTH, INVALID_FORMAT" },
+      { name: "isValidTan", signature: "isValidTan(input: string)", returns: "boolean" },
+      { name: "parseTan", signature: "parseTan(input: string)", returns: "Result<TanParts, TanError>" },
+      { name: "normalizeTan", signature: "normalizeTan(input: string)", returns: "string" },
+    ],
+    errors: [
+      ["EMPTY", "Nothing was entered."],
+      ["INVALID_LENGTH", "Not 10 characters."],
+      ["INVALID_FORMAT", "Not 4 letters, 5 digits, 1 letter."],
+    ],
+    sources: [
+      { label: "Income Tax Department: Tax Deduction and Collection Account Number (TAN)", url: "https://www.incometaxindia.gov.in/Pages/tax-services/apply-for-tan.aspx" },
+      { label: "Protean (NSDL): TAN, structure and allotment", url: "https://www.protean-tinpan.com/services/tan/tan-introduction.html" },
+    ],
+  },
+  {
     slug: "ifsc",
     name: "IFSC",
     noun: "IFSC",

@@ -9,6 +9,7 @@ import {
   parseIfsc,
   parsePan,
   parsePincode,
+  parseTan,
   parseVehicleNumber,
   parseVpa,
   rupeesInWords,
@@ -67,6 +68,14 @@ export const PLAYGROUNDS: Readonly<Record<string, PlaygroundSpec>> = {
     samples: [["Individual", "ABCPE1234F"], ["Company", "AAACB1234C"], ["Bad holder type", "ABCDE1234F"], ["Digit in the wrong place", "ABCPEX234F"]],
     cells: { length: 10, boundaries: [3, 4, 5, 9] },
     run: (input) => fromResult(parsePan(input), (v) => `Holder type ${v.holderType}: ${v.holderTypeName}.`),
+  },
+  tan: {
+    label: "TAN",
+    placeholder: "BLRA12345B",
+    initial: "BLRA12345B",
+    samples: [["Valid demo", "BLRA12345B"], ["Spaced, lower case", "blra 12345 b"], ["Digit as 4th", "BLR012345B"], ["Too short", "BLRA1234B"]],
+    cells: { length: 10, boundaries: [3, 4, 9] },
+    run: (input) => fromResult(parseTan(input), (v) => `Jurisdiction ${v.jurisdiction}, deductor's name starts with ${v.nameInitial}. Shape only: TRACES confirms the deductor.`),
   },
   ifsc: {
     label: "IFSC",

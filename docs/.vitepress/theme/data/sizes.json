@@ -15,6 +15,12 @@
     "parsePan": 786,
     "validatePan": 699
   },
+  "tan": {
+    "isValidTan": 455,
+    "normalizeTan": 116,
+    "parseTan": 527,
+    "validateTan": 449
+  },
   "ifsc": {
     "isValidIfsc": 489,
     "lookupIfsc": 863,
