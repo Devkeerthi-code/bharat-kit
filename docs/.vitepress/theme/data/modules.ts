@@ -282,6 +282,7 @@ export const MODULES: readonly ModuleInfo[] = [
       { name: "isValidMobile", signature: "isValidMobile(input: string)", returns: "boolean" },
       { name: "formatMobile", signature: 'formatMobile(input, format?: "international" | "national" | "e164")', returns: "Result<string, MobileError>" },
       { name: "toWhatsAppLink", signature: "toWhatsAppLink(input: string, message?: string)", returns: "Result<string, MobileError>" },
+      { name: "maskMobile", signature: 'maskMobile(input, format?: "international" | "national")', returns: "Result<string, MobileError>", note: '"+91 XXXXX X3210", for "code sent to" screens.' },
       { name: "normalizeMobile", signature: "normalizeMobile(input: string)", returns: "string" },
     ],
     errors: [

@@ -37,6 +37,17 @@ toWhatsAppLink("98765 43210", "Is my order ready?");
 // "https://wa.me/919876543210?text=Is%20my%20order%20ready%3F"
 ```
 
+## Mask {#mask}
+
+For an OTP screen ("We sent a code to …") or a support log, show only the last four digits:
+
+```ts
+import { maskMobile } from "bharat-kit/mobile";
+
+maskMobile("098765-43210");             // { ok: true, value: "+91 XXXXX X3210" }
+maskMobile("9876543210", "national");   // { ok: true, value: "XXXXX X3210" }
+```
+
 ## Functions {#functions}
 
 <SpecTables module="mobile" part="functions" />

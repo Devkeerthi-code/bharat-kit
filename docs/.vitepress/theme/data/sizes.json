@@ -49,8 +49,9 @@
     "validateVpa": 575
   },
   "mobile": {
-    "formatMobile": 587,
+    "formatMobile": 588,
     "isValidMobile": 506,
+    "maskMobile": 564,
     "normalizeMobile": 174,
     "toWhatsAppLink": 581,
     "validateMobile": 497
