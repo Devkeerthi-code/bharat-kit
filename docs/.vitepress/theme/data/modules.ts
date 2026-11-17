@@ -136,6 +136,38 @@ export const MODULES: readonly ModuleInfo[] = [
     ],
   },
   {
+    slug: "cin",
+    name: "CIN",
+    noun: "CIN",
+    article: "a",
+    sample: "U72200KA2010PTC012345",
+    purpose: "A company's identity number: listed or not, industry, state, year, ownership.",
+    imports: "validateCin, parseCin",
+    snippets: {
+      validate: `validateCin("U72200KA2010XYZ012345")\n// { ok: false, reason: "INVALID_OWNERSHIP_TYPE", index: 12, … }`,
+      format: `const r = validateCin("u 72200 ka 2010 ptc 012345")\nif (r.ok) save(r.value) // "U72200KA2010PTC012345"`,
+      parse: `parseCin("U72200KA2010PTC012345")\n// { ok: true, value: { listed: false, industryCode: "72200", stateCode: "KA",\n//   yearOfIncorporation: 2010, ownershipName: "Private Limited Company", … } }`,
+    },
+    functions: [
+      { name: "validateCin", signature: "validateCin(input: string)", returns: "Result<string, CinError>", errors: "All codes below", note: "The year must be between 1850 and this year." },
+      { name: "isValidCin", signature: "isValidCin(input: string)", returns: "boolean" },
+      { name: "parseCin", signature: "parseCin(input: string)", returns: "Result<CinParts, CinError>" },
+      { name: "normalizeCin", signature: "normalizeCin(input: string)", returns: "string" },
+    ],
+    errors: [
+      ["EMPTY", "Nothing was entered."],
+      ["INVALID_LENGTH", "Not 21 characters."],
+      ["INVALID_LISTING", "Does not start with L or U."],
+      ["INVALID_FORMAT", "A letter where a digit belongs, or the other way round."],
+      ["INVALID_YEAR", "Year of incorporation before 1850 or in the future."],
+      ["INVALID_OWNERSHIP_TYPE", "Characters 13–15 are not a known ownership code."],
+    ],
+    sources: [
+      { label: "Ministry of Corporate Affairs", url: "https://www.mca.gov.in/" },
+      { label: "MoSPI: National Industrial Classification 2008", url: "https://www.mospi.gov.in/classification/national-industrial-classification" },
+    ],
+  },
+  {
     slug: "ifsc",
     name: "IFSC",
     noun: "IFSC",

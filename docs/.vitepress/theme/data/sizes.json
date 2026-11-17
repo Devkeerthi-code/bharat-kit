@@ -21,6 +21,12 @@
     "parseTan": 527,
     "validateTan": 449
   },
+  "cin": {
+    "isValidCin": 935,
+    "normalizeCin": 116,
+    "parseCin": 1033,
+    "validateCin": 923
+  },
   "ifsc": {
     "isValidIfsc": 489,
     "lookupIfsc": 863,

@@ -4,6 +4,7 @@ import {
   formatMobile,
   formatVehicleNumber,
   maskAadhaar,
+  parseCin,
   parseAmount,
   parseGstin,
   parseIfsc,
@@ -76,6 +77,14 @@ export const PLAYGROUNDS: Readonly<Record<string, PlaygroundSpec>> = {
     samples: [["Valid demo", "BLRA12345B"], ["Spaced, lower case", "blra 12345 b"], ["Digit as 4th", "BLR012345B"], ["Too short", "BLRA1234B"]],
     cells: { length: 10, boundaries: [3, 4, 9] },
     run: (input) => fromResult(parseTan(input), (v) => `Jurisdiction ${v.jurisdiction}, deductor's name starts with ${v.nameInitial}. Shape only: TRACES confirms the deductor.`),
+  },
+  cin: {
+    label: "CIN",
+    placeholder: "U72200KA2010PTC012345",
+    initial: "U72200KA2010PTC012345",
+    samples: [["Private company", "U72200KA2010PTC012345"], ["Listed company", "L65910MH1995PLC123456"], ["Unknown ownership", "U72200KA2010XYZ012345"], ["Future year", "U72200KA2099PTC012345"]],
+    cells: { length: 21, boundaries: [1, 6, 8, 12, 15] },
+    run: (input) => fromResult(parseCin(input), (v) => `${v.ownershipName}, ${v.listed ? "listed" : "unlisted"}, incorporated ${v.yearOfIncorporation} in ${v.stateCode}. Industry code ${v.industryCode}.`),
   },
   ifsc: {
     label: "IFSC",
