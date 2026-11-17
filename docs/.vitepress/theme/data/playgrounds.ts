@@ -11,6 +11,7 @@ import {
   parsePan,
   parsePincode,
   parseTan,
+  parseUdyam,
   parseVehicleNumber,
   parseVpa,
   rupeesInWords,
@@ -85,6 +86,13 @@ export const PLAYGROUNDS: Readonly<Record<string, PlaygroundSpec>> = {
     samples: [["Private company", "U72200KA2010PTC012345"], ["Listed company", "L65910MH1995PLC123456"], ["Unknown ownership", "U72200KA2010XYZ012345"], ["Future year", "U72200KA2099PTC012345"]],
     cells: { length: 21, boundaries: [1, 6, 8, 12, 15] },
     run: (input) => fromResult(parseCin(input), (v) => `${v.ownershipName}, ${v.listed ? "listed" : "unlisted"}, incorporated ${v.yearOfIncorporation} in ${v.stateCode}. Industry code ${v.industryCode}.`),
+  },
+  udyam: {
+    label: "Udyam Registration Number",
+    placeholder: "UDYAM-KA-03-0012345",
+    initial: "udyam ka 03 0012345",
+    samples: [["Typed loosely", "udyam ka 03 0012345"], ["Hyphenated", "UDYAM-MH-18-0001234"], ["Old Udyog Aadhaar", "KR03D0012345"], ["Letter in district", "UDYAM-KA-0A-0012345"]],
+    run: (input) => fromResult(parseUdyam(input), (v) => `${v.udyam}: state ${v.stateCode}, district ${v.districtCode}. Shape only: the Udyam portal confirms the enterprise.`),
   },
   ifsc: {
     label: "IFSC",

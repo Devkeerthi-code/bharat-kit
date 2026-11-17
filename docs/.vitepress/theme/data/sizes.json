@@ -27,6 +27,12 @@
     "parseCin": 1033,
     "validateCin": 923
   },
+  "udyam": {
+    "isValidUdyam": 576,
+    "normalizeUdyam": 144,
+    "parseUdyam": 595,
+    "validateUdyam": 567
+  },
   "ifsc": {
     "isValidIfsc": 489,
     "lookupIfsc": 863,

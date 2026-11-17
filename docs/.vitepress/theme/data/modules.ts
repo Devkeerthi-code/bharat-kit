@@ -168,6 +168,38 @@ export const MODULES: readonly ModuleInfo[] = [
     ],
   },
   {
+    slug: "udyam",
+    name: "Udyam",
+    noun: "Udyam number",
+    article: "a",
+    sample: "UDYAM-KA-03-0012345",
+    purpose: "The MSME registration small businesses quote to get priority lending and tenders.",
+    imports: "validateUdyam, parseUdyam",
+    snippets: {
+      validate: `validateUdyam("UDYAM-KA-0A-0012345")\n// { ok: false, reason: "INVALID_DISTRICT", index: 7, … }`,
+      format: `validateUdyam("udyam ka 03 0012345")\n// { ok: true, value: "UDYAM-KA-03-0012345" }, hyphens put back`,
+      parse: `parseUdyam("UDYAM-KA-03-0012345")\n// { ok: true, value: { stateCode: "KA", districtCode: "03", serial: "0012345", … } }`,
+    },
+    functions: [
+      { name: "validateUdyam", signature: "validateUdyam(input: string)", returns: "Result<string, UdyamError>", note: "The value is always the hyphenated form." },
+      { name: "isValidUdyam", signature: "isValidUdyam(input: string)", returns: "boolean" },
+      { name: "parseUdyam", signature: "parseUdyam(input: string)", returns: "Result<UdyamParts, UdyamError>" },
+      { name: "normalizeUdyam", signature: "normalizeUdyam(input: string)", returns: "string", note: "Compact form without hyphens, for storage keys." },
+    ],
+    errors: [
+      ["EMPTY", "Nothing was entered."],
+      ["MISSING_PREFIX", "Does not start with UDYAM."],
+      ["INVALID_LENGTH", "Not UDYAM plus 11 characters."],
+      ["INVALID_STATE", "The two characters after UDYAM are not letters."],
+      ["INVALID_DISTRICT", "The district code is not two digits."],
+      ["INVALID_SERIAL", "The last part is not seven digits."],
+    ],
+    sources: [
+      { label: "Ministry of MSME: Udyam Registration", url: "https://udyamregistration.gov.in/" },
+      { label: "Gazette notification S.O. 2119(E), 26 June 2020", url: "https://msme.gov.in/sites/default/files/MSME_gazette_of_india.pdf" },
+    ],
+  },
+  {
     slug: "ifsc",
     name: "IFSC",
     noun: "IFSC",
