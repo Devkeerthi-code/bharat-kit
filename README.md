@@ -216,7 +216,7 @@ The library needs no environment variables. The docs build reads two optional on
 4. Run `npx changeset` and describe the change for users.
 5. Open a pull request.
 
-Use only invented demo values in tests, docs and issues. Never paste a real Aadhaar, PAN or GSTIN.
+The full checklist, including how to add a new identifier, is in [CONTRIBUTING.md](./CONTRIBUTING.md). Use only invented demo values in tests, docs and issues. Never paste a real Aadhaar, PAN or GSTIN.
 
 ## Sources
 
