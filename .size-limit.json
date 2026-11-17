@@ -3,7 +3,7 @@
     "name": "bharat-kit (everything)",
     "path": "dist/index.js",
     "import": "*",
-    "limit": "9400 B"
+    "limit": "9800 B"
   },
   {
     "name": "bharat-kit/gstin",
@@ -45,7 +45,7 @@
     "name": "bharat-kit/upi",
     "path": "dist/upi.js",
     "import": "*",
-    "limit": "1150 B"
+    "limit": "1700 B"
   },
   {
     "name": "bharat-kit/mobile",

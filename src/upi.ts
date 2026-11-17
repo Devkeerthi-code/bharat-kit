@@ -112,3 +112,104 @@ export function buildUpiLink(options: UpiPaymentOptions): Result<string, UpiLink
   }
   return ok(`upi://pay?${params.join("&")}`);
 }
+
+export interface ParsedUpiLink {
+  readonly payeeVpa: string;
+  readonly payeeName?: string;
+  readonly amountPaise?: number;
+  readonly note?: string;
+  readonly transactionRef?: string;
+  readonly merchantCode?: string;
+}
+
+export type UpiLinkParseError =
+  | VpaError
+  | "NOT_UPI_LINK"
+  | "MALFORMED_ENCODING"
+  | "DUPLICATE_PARAMETER"
+  | "MISSING_PAYEE"
+  | "INVALID_AMOUNT"
+  | "INVALID_CURRENCY"
+  | "INVALID_MERCHANT_CODE";
+
+const UPI_PREFIX = /^upi:\/\/pay\?/i;
+
+/** "+" is read as a space, as many QR generators write it; buildUpiLink itself never uses it. */
+function decodeValue(value: string): string | null {
+  try {
+    return decodeURIComponent(value.replace(/\+/g, " "));
+  } catch {
+    return null;
+  }
+}
+
+function readParams(query: string): Result<Map<string, string>, "MALFORMED_ENCODING" | "DUPLICATE_PARAMETER"> {
+  const params = new Map<string, string>();
+  for (const pair of query.split("&")) {
+    if (pair === "") continue;
+    const eq = pair.indexOf("=");
+    const key = (eq === -1 ? pair : pair.slice(0, eq)).toLowerCase();
+    const value = decodeValue(eq === -1 ? "" : pair.slice(eq + 1));
+    if (value === null) return err("MALFORMED_ENCODING", `The value of "${key}" is not valid percent-encoding.`);
+    // A repeated parameter is how a tampered link hides a second payee or amount, so refuse it.
+    if (params.has(key)) return err("DUPLICATE_PARAMETER", `"${key}" appears more than once.`);
+    params.set(key, value);
+  }
+  return ok(params);
+}
+
+function rupeesToPaise(am: string): number | null {
+  const match = /^(\d+)(?:\.(\d{1,2}))?$/.exec(am);
+  if (!match) return null;
+  const paise = Number(match[1]) * 100 + Number((match[2] ?? "").padEnd(2, "0"));
+  return Number.isSafeInteger(paise) && paise > 0 ? paise : null;
+}
+
+function textParam(params: Map<string, string>, key: string): string | undefined {
+  const value = params.get(key)?.trim();
+  return value === "" ? undefined : value;
+}
+
+/**
+ * Reads a upi://pay link, for example from a scanned QR code, and checks it.
+ * The payee address is validated, the amount comes back in paise, and a link
+ * that repeats a parameter is rejected. Unknown parameters are ignored.
+ */
+export function parseUpiLink(link: string): Result<ParsedUpiLink, UpiLinkParseError> {
+  const trimmed = link.trim();
+  if (trimmed === "") return err("EMPTY", "Paste a UPI link.");
+  if (!UPI_PREFIX.test(trimmed)) return err("NOT_UPI_LINK", "A UPI payment link starts with upi://pay?.");
+  const [query = ""] = trimmed.replace(UPI_PREFIX, "").split("#");
+  const read = readParams(query);
+  if (!read.ok) return read;
+  const params = read.value;
+
+  const pa = textParam(params, "pa");
+  if (pa === undefined) return err("MISSING_PAYEE", "The link has no payee address (pa).");
+  const payee = validateVpa(pa);
+  if (!payee.ok) return payee;
+
+  const currency = params.get("cu");
+  if (currency !== undefined && currency.toUpperCase() !== "INR") {
+    return err("INVALID_CURRENCY", `UPI pays in INR; this link asks for "${currency}".`);
+  }
+  const merchantCode = params.get("mc");
+  if (merchantCode !== undefined && !/^\d{4}$/.test(merchantCode)) {
+    return err("INVALID_MERCHANT_CODE", "A merchant category code is 4 digits.");
+  }
+  const am = textParam(params, "am");
+  const amountPaise = am === undefined ? undefined : rupeesToPaise(am);
+  if (amountPaise === null) return err("INVALID_AMOUNT", `"${am}" is not an amount in rupees above zero, like 125.50.`);
+
+  const payeeName = textParam(params, "pn");
+  const note = textParam(params, "tn");
+  const transactionRef = textParam(params, "tr");
+  return ok({
+    payeeVpa: payee.value,
+    ...(payeeName === undefined ? {} : { payeeName }),
+    ...(amountPaise === undefined ? {} : { amountPaise }),
+    ...(note === undefined ? {} : { note }),
+    ...(transactionRef === undefined ? {} : { transactionRef }),
+    ...(merchantCode === undefined ? {} : { merchantCode }),
+  });
+}
